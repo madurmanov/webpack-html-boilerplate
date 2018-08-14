@@ -1,0 +1,24 @@
+<% var data = {
+  title: "Заголовок"
+}; %>
+
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title><%=data.title%></title>
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="css/bundle.css">
+</head>
+<body>
+
+  <%= _.template(require('./../blocks/header/header.html'))(data) %>
+
+  <p>content</p>
+
+  <%= _.template(require('./../blocks/footer/footer.html'))(data) %>
+
+  <script src="js/bundle.js"></script>
+
+</body>
+</html>
