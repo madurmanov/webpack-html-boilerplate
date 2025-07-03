@@ -1,3 +1,1 @@
-export default () => {
-  console.log('header')
-}
+console.log('header');
