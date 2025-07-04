@@ -5,7 +5,6 @@ const prettier = require('prettier');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const data = require('./src/data');
 
 const generateHtmlPlugins = () => {
@@ -33,7 +32,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[contenthash].js',
     assetModuleFilename: 'images/[hash][ext][query]',
-    clean: true,
   },
   resolve: {
     extensions: ['.js', '.scss'],
@@ -94,7 +92,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
       chunkFilename: 'css/[id].[contenthash].css',

@@ -36,7 +36,12 @@
     </style>
   </head>
   <body>
+    <%- include('../../dist/sprite.svg') %>
+    <!---->
     <%- include('../blocks/header/header.ejs') %>
     <main>Content</main>
+    <svg class="Icon Icon_color_red">
+      <use xlink:href="#icon-name"></use>
+    </svg>
   </body>
 </html>

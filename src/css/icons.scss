@@ -1,0 +1,19 @@
+.Icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  color: #000;
+
+  &_size {
+    &_20 {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &_color {
+    &_red {
+      color: #f00;
+    }
+  }
+}

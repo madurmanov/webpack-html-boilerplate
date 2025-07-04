@@ -9,13 +9,14 @@
   "author": "Mikhail Durmanov",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "clean": "rimraf dist",
+    "icons": "webpack --config webpack.icons.js",
+    "start": "npm run clean && npm run icons && webpack serve --config webpack.dev.js",
+    "build": "npm run clean && npm run icons && webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "babel-loader": "^10.0.0",
-    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^13.0.0",
     "css-loader": "^7.1.2",
     "css-minimizer-webpack-plugin": "^7.0.2",
@@ -26,8 +27,12 @@
     "postcss": "^8.5.6",
     "postcss-loader": "^8.1.1",
     "prettier": "^3.6.2",
+    "remove-files-webpack-plugin": "^1.5.0",
+    "rimraf": "^6.0.1",
     "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo-loader": "^4.0.0",
     "template-ejs-loader": "^0.9.4",
     "terser-webpack-plugin": "^5.3.14",
     "webpack": "^5.99.9",
