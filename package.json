@@ -9,9 +9,8 @@
   "author": "Mikhail Durmanov",
   "license": "MIT",
   "scripts": {
-    "start": "webpack serve --config webpack.server.js",
-    "dev": "webpack --config webpack.dev.js",
-    "prod": "webpack --config webpack.prod.js"
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "babel-loader": "^10.0.0",
@@ -23,6 +22,7 @@
     "html-webpack-plugin": "^5.6.3",
     "image-webpack-loader": "^8.1.0",
     "mini-css-extract-plugin": "^2.9.2",
+    "prettier": "^3.6.2",
     "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
     "terser-webpack-plugin": "^5.3.14",
@@ -30,8 +30,5 @@
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1"
-  },
-  "dependencies": {
-    "prettier": "^3.6.2"
   }
 }
