@@ -12,19 +12,15 @@ const generateHtmlPlugins = () => {
   const templatesDir = path.resolve(__dirname, 'src/templates');
   const templateFiles = fs
     .readdirSync(templatesDir)
-    .filter((file) => file.endsWith('.html'));
+    .filter((file) => file.endsWith('.ejs'));
 
   return templateFiles.map((file) => {
     const filePath = path.resolve(templatesDir, file);
     const name = path.parse(file).name;
-    const html = ejs.render(fs.readFileSync(filePath, 'utf-8'), data, {
-      filename: filePath,
-    });
-    const formattedHtml = prettier.format(html, { parser: 'html' });
 
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
-      templateContent: formattedHtml,
+      template: filePath,
       inject: true,
       minify: false,
     });
@@ -44,6 +40,19 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.ejs$/,
+        use: [
+          {
+            loader: 'html-loader',
+            options: { sources: false },
+          },
+          {
+            loader: 'template-ejs-loader',
+            options: { data },
+          },
+        ],
+      },
       {
         test: /\.(s[ac]ss|css)$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
