@@ -1,7 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const ejs = require('ejs');
-const prettier = require('prettier');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -11,7 +9,7 @@ const generateHtmlPlugins = () => {
   const templatesDir = path.resolve(__dirname, 'src/templates');
   const templateFiles = fs
     .readdirSync(templatesDir)
-    .filter((file) => file.endsWith('.ejs'));
+    .filter((file) => file.endsWith('.pug'));
 
   return templateFiles.map((file) => {
     const filePath = path.resolve(templatesDir, file);
@@ -22,6 +20,7 @@ const generateHtmlPlugins = () => {
       template: filePath,
       inject: true,
       minify: false,
+      templateParameters: data,
     });
   });
 };
@@ -31,7 +30,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].[contenthash].js',
-    assetModuleFilename: 'images/[hash][ext][query]',
+    assetModuleFilename: 'images/[name][ext]',
   },
   resolve: {
     extensions: ['.js', '.scss'],
@@ -39,17 +38,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.ejs$/,
-        use: [
-          {
-            loader: 'html-loader',
-            options: { sources: false },
-          },
-          {
-            loader: 'template-ejs-loader',
-            options: { data },
-          },
-        ],
+        test: /\.pug$/,
+        use: ['pug-loader'],
       },
       {
         test: /\.(s[ac]ss|css)$/,

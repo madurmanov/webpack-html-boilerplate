@@ -18,6 +18,6 @@ module.exports = merge(common, {
     open: true,
     port: 3000,
     hot: true,
-    watchFiles: ['src/templates/**/*.ejs', 'src/blocks/**/*.ejs'],
+    watchFiles: ['src/templates/**/*.pug', 'src/blocks/**/*.pug'],
   },
 });
