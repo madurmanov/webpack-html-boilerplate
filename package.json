@@ -12,7 +12,8 @@
     "clean": "rimraf dist",
     "icons": "webpack --config webpack.icons.js",
     "start": "npm run clean && npm run icons && webpack serve --config webpack.dev.js",
-    "build": "npm run clean && npm run icons && webpack --config webpack.prod.js"
+    "build": "npm run clean && npm run icons && webpack --config webpack.prod.js",
+    "build:min": "npm run clean && npm run icons && webpack --config webpack.prod.js --env min"
   },
   "devDependencies": {
     "@babel/core": "^7.28.0",
